@@ -10,7 +10,8 @@ import {
 
 const AdminDashboard = () => {
   const [isDarkMode, setIsDarkMode] = useState(false);
-
+  console.log("Hello dude is checking");
+  
   const admin = {
     photo: "https://via.placeholder.com/80", 
     name: "John Doe",
