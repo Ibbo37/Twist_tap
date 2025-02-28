@@ -1,0 +1,125 @@
+.categories-container {
+  text-align: center;
+  padding: 40px 20px; /* Padding around the container */
+  background-color: black; /* Background color for the whole container */
+}
+
+.categories-heading {
+  font-size: 2.5em; /* Increased font size */
+  margin-bottom: 30px; /* Increased space between heading and cards */
+  font-weight: bold;
+  color: rgb(254, 130, 140); /* Heading color */
+  margin-top: 0px; /* Set margin-top to 0 to bring the heading up */
+}
+
+.cards-wrapper {
+  display: flex;
+  justify-content: space-evenly; /* Equal space between all cards including edges */
+  gap: 4px; /* Reduced space between cards horizontally */
+  row-gap: 15px; /* Reduced vertical space between rows */
+  flex-wrap: wrap; /* Ensures the cards wrap into multiple rows */
+}
+
+.category-card {
+  width: calc(18% - 4px); /* Adjusted for reduced horizontal gap */
+  height: 300px; /* Reduced height */
+  border: 2px solid #ddd;
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+  background-color: white;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, filter 0.3s ease;
+  transform-style: preserve-3d; /* Ensures the 3D effect is preserved */
+  transform: rotateY(0deg); /* Initial state */
+  margin-bottom: 15px; /* More space between rows */
+}
+
+/* Hover effect on the category card */
+.category-card:hover {
+  transform: rotateY(10deg) scale(1.05); /* 3D rotate effect with scaling */
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25); /* Deep shadow effect */
+  filter: brightness(1.1); /* Slightly brighter on hover */
+}
+
+.category-card:hover .category-name {
+  background-color: black; /* Change background of heading to black */
+  color: white; /* Change text color to white */
+}
+
+.category-card:hover .category-logo {
+  background-color: rgb(254, 130, 140); /* Pink background on hover */
+  transform: scale(1.1) rotateY(10deg); /* Slight 3D effect for logo */
+  box-shadow: 0 4px 15px rgba(254, 130, 140, 0.7); /* Pink shadow on hover */
+}
+
+.category-image {
+  width: 100%;
+  height: 150px; /* Reduced image height to match smaller card */
+  object-fit: cover;
+}
+
+.category-info {
+  display: flex;
+  align-items: center; /* Vertically center logo and heading */
+  justify-content: space-between; /* Spread out the content to left and right */
+  gap: 10px;
+  padding: 10px;
+}
+
+.category-name {
+  padding: 6px; /* Reduced padding */
+  font-size: 1em; /* Slightly smaller font size */
+  background-color: rgb(254, 130, 140); /* Heading background color */
+  color: white; /* Text color */
+  margin: 0;
+  border-top: 1px solid #ddd;
+  position: relative;
+  overflow: hidden;
+  text-transform: uppercase; /* Uppercase text */
+  letter-spacing: 1px; /* Spacing between letters */
+  text-align: left; /* Left aligned text */
+  flex: 1; /* Allow the name to take full width */
+  transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition */
+}
+
+.category-card:focus .category-name::before {
+  transform: scaleX(1);
+  transform-origin: left;
+  background: linear-gradient(90deg, rgba(254, 130, 140, 0.8), rgba(255, 255, 255, 0.2)); /* Gradient effect on top */
+}
+
+.category-logo {
+  width: 50px; /* Slightly smaller logo size */
+  height: auto;
+  background-color: black; /* Initial black background for logo */
+  transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease; /* Added box-shadow transition */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Initial shadow effect */
+}
+
+.category-name::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 5px;
+  background: linear-gradient(90deg, rgba(254, 130, 140, 0.8), rgba(255, 255, 0, 0.2)); /* Gradient effect on top */
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.3s ease-in-out;
+}
+
+.category-description {
+  padding: 5px; /* Reduced padding */
+  font-size: 0.8em; /* Smaller font size for description */
+  background-color: white; /* White background for description */
+  color: #333;
+  border-top: 1px solid #ddd;
+  height: 60px; /* Reduced height for description */
+  overflow: auto;
+}
+
+/* Remove right margin from the last card in each row */
+.category-card:last-child {
+  margin-right: 0;
+}

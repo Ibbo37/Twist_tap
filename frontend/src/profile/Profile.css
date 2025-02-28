@@ -1,0 +1,138 @@
+/* Profile Container */
+.profile-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    gap: 40px;
+  }
+  
+  /* "Your Profile" Heading */
+.profile-header {
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-size: 32px;
+    color: #333;
+  }
+  
+  /* Profile Card */
+  .profile-card {
+    width: 40%;
+    min-height: 700px;
+    background-color: #716b6b; /* Black background */
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px #eac7cdfa; /* Pink shadow */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+    margin-left: 30px;
+  }
+ 
+  /* Profile Image Section */
+  .profile-image-section {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .image-wrapper {
+    position: relative;
+  }
+  
+  .profile-image {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 5px solid pink;
+    box-shadow: 0 0 15px pink;
+    margin-bottom: 10px;
+  }
+  
+  .file-label {
+    position: absolute;
+    bottom: -25px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: pink;
+    color: #000;
+    font-size: 14px;
+    padding: 5px 10px;
+    border-radius: 20px;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  .file-label:hover {
+    background-color: #ff99cc;
+  }
+  
+  .file-label input {
+    display: none;
+  }
+  
+  /* Profile Info */
+  .profile-info {
+    margin-top: 30px;
+    width: 100%;
+  }
+  
+  .info-item {
+    margin-bottom: 15px;
+    font-size: 18px;
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .info-item label {
+    font-weight: bold;
+    color: pink;
+  }
+  
+  .info-item p {
+    color: #fff;
+    margin: 0;
+  }
+  
+  /* Profile Fields */
+  .profile-fields {
+    width: 40%;
+    background-color: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    min-height: 700px;
+    margin-top: 20px;
+    margin-right: 30px;
+    
+  }
+  
+  .field label {
+    font-size: 18px;
+    color: #555;
+  }
+  
+  .field input {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .save-button {
+    padding: 10px 20px;
+    background-color: #28a745;
+    color: white;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .save-button:hover {
+    background-color: #218838;
+  }
+    

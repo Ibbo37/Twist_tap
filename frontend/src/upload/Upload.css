@@ -1,0 +1,245 @@
+/* Main Container */
+.upload-main-container {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Centered Heading */
+.upload-main-upload-heading {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.upload-main-upload-heading h1 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+/* Upload Section with Description and Image Slider Side by Side */
+.upload-main-content {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 30px;
+}
+
+/* Left Side: Description */
+.upload-main-description-text {
+  flex: 1;
+  max-width: 500px;
+  padding-right: 10px;
+  text-align: left;
+  margin-left: 60px;
+}
+
+.upload-main-description-text p {
+  font-size: 18px;
+  line-height: 1.5;
+  color: #fff;
+  margin: 0;
+  word-wrap: break-word;
+}
+
+/* First Image Slider */
+.upload-image-slider {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  position: relative;
+  margin-right: 20px;
+}
+
+.upload-image-slider-wrapper {
+  display: flex;
+  animation: slide 25s linear infinite;
+  width: 100%;
+}
+
+.upload-image-slider-wrapper img {
+  width: 20%; /* Each image takes 20% of the total width */
+  height: auto;
+  object-fit: cover;
+  margin: 0;
+  padding: 0;
+}
+
+/* Keyframes for Sliding Animation */
+@keyframes slide {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+/* Video Upload Section */
+.upload-main-description {
+  width: 100%;
+  padding: 40px;
+  text-align: center;
+  margin-left: 800px;
+  margin-bottom: 70px;
+  margin-top: 70px;   /* Shift video section up */
+}
+
+.upload-main-description input[type="file"] {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+  font-size: 22px;
+}
+
+.upload-main-description button {
+  margin-top: -160px;
+  padding: 10px 20px;
+  font-size: 20px;
+  margin-right: 500px;
+  background-color: #fff;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+  color: #000;
+}
+
+.upload-main-description button:hover {
+  background-color: #fe828c;
+  color: #fff;
+}
+
+.upload-main-description h2 {
+  font-size: 20px;
+  margin-top: 20px;
+  color: #333;
+}
+
+/* Video Display Section */
+.upload-videos-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  justify-content: center;
+  margin-top: -70px;
+  
+}
+
+.upload-video-item {
+  width: 250px;
+  height: 400px;
+  border: 1px solid #fe828c;
+  border-radius: 8px;
+  overflow: hidden;
+  object-fit: contain;
+  background-color: black;
+  transition: transform 0.3s, box-shadow 0.3s ease-in-out;
+}
+
+.upload-video-item:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 20px #fe828c;
+}
+
+/* Cards Animation Section */
+.upload-cards-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  top: -250px; /* Move cards up slightly */
+  position: relative;
+  height: 200px;
+  overflow: hidden;
+  gap: 10px;
+  left: -180px;
+}
+
+.upload-card {
+  width: 150px;
+  height: 80px;
+  background-color: pink;
+  color: black;
+  font-size: 14px;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  opacity: 0;
+  animation: cardAnimationVertical 8s linear infinite;
+  border: #000;
+}
+
+.card-1 {
+  animation-delay: 0s;
+}
+
+.card-2 {
+  animation-delay: 2s;
+}
+
+.card-3 {
+  animation-delay: 4s;
+}
+
+.card-4 {
+  animation-delay: 6s;
+}
+
+/* Keyframes for Cards Animation */
+@keyframes cardAnimationVertical {
+  0% {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  10% {
+    transform: translateY(50%);
+    opacity: 1;
+  }
+  30% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  50% {
+    transform: translateY(-50%);
+    opacity: 0.5;
+  }
+  70% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  90% {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+}
+/* Video placed between description and cards */
+.upload-side-video {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: -270px; /* Move video up */
+  margin-bottom: 40px; /* Add space below video */
+  margin-left: -1100px;
+}
+
+.side-video {
+  width: 80%;  /* Adjust the width of the video */
+  max-width: 400px;  /* Maximum width for the video */
+  border-radius: 10px;  /* Optional: For rounded corners */
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.2); /* Optional: To add shadow */
+} 

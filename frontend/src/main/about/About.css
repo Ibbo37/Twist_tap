@@ -1,0 +1,176 @@
+/* Overall Section */
+.about-section {
+  width: 100%;
+  background-color: #fe828c; /* Background color for the section */
+  padding: 20px 0;
+  position: relative;
+}
+
+/* Logo and Text Section */
+.about-container {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  height: 300px;
+  position: relative;
+}
+
+.icon-container {
+  margin-left: 70px;
+  margin-top: -250px;
+}
+
+.about-logo {
+  width: 50px;
+  height: auto;
+}
+
+.text-container {
+  position: absolute;
+  left: 120px;
+  top: 20px;
+}
+
+.about-text {
+  font-size: 23px;
+  font-weight: bold;
+  color: black;
+  font-family: 'Arial', sans-serif;
+}
+
+/* Quote Section */
+.quote-container {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+.about-quote {
+  width: 20%;
+  font-size: 18px;
+  font-style: italic;
+  color: black;
+  text-align: center;
+  font-family: 'Georgia', serif;
+  margin-top: -255px;
+  margin-left: -1300px;
+}
+
+/* Side Sections Parent */
+.side-section-container {
+  position: absolute;
+  top: 15px;
+  right: 150px;
+  left: 400px;
+  display: flex;
+  gap: 30px;
+}
+
+/* Discover, Quick Links, Contact Sections */
+.discover-section,
+.quicklinks-section,
+.contact-section {
+  background-color: #fe828c;
+  padding: 15px 20px;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  box-shadow: none;
+  transition: border 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+  width: 550px; /* Ensure all these sections have the same width */
+  height: 300px; /* Ensuring consistent height for all sections */
+}
+
+.discover-section:hover,
+.quicklinks-section:hover,
+.contact-section:hover {
+  border: 1px solid #000;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.7);
+  transform: scale(1.02);
+}
+
+.discover-heading,
+.quicklinks-heading,
+.contact-heading {
+  font-size: 25px;
+  margin-bottom: 10px;
+  color: #333;
+
+  
+}
+
+.discover-list,
+.quicklinks-list,
+.contact-list {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.discover-list li,
+.quicklinks-list li,
+.contact-list li {
+  margin: 15px 0;
+  font-size: 16px;
+  color: #000;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.discover-list li:hover,
+.quicklinks-list li:hover,
+.contact-list li:hover {
+  color: #fff;
+}
+
+/* Subscribe Section */
+.subscribe-section {
+  background-color: #fe828c;
+  padding: 15px 20px;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  box-shadow: none;
+  transition: border 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.subscribe-heading {
+  font-size: 25px;
+  color: #333;
+  margin-left: 220px;
+  margin-bottom: 10px;
+}
+
+.subscribe-text {
+  font-size: 14px;
+  color: #000;
+  margin-bottom: 10px;
+  text-align: center;
+  margin-left: 50px;
+  width:130%;
+  margin-top: 4%;
+}
+
+.subscribe-input {
+  width: 130%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-bottom: 10px;
+  box-sizing: border-box;
+  margin-left: 50px;
+}
+
+.subscribe-button {
+  background-color: #f5a623;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+  margin-left: 50px;
+  width: 120px;
+}
+
+.subscribe-button:hover {
+  background-color: #e59500;
+}

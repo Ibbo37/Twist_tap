@@ -1,0 +1,151 @@
+.feedback-section {
+    background-color: black;
+    color: #fe828c;
+    padding: 50px 0;
+    text-align: center;
+    font-family: 'Arial', sans-serif;
+    
+}
+
+.feedback-heading {
+    font-size: 55px;
+    color: #fe828c;
+    margin-top: 2%;
+    margin-bottom: 70px;
+    
+}
+
+/* Feedback container with animated background image moving horizontally */
+.feedback-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    height: 400px;
+    width: 100%;
+    background-image: url('/FeedbackImg/Fbg.webp');
+    background-size: cover;
+    background-position: center;
+    animation: zoomBackground 5s infinite alternate ease-in-out;
+    box-shadow: 0 5px 5px #fe828c/* Pink shadow */
+}
+
+@keyframes zoomBackground {
+    1% {
+        transform: scale(1); /* No zoom */
+    }
+    100% {
+        transform: scale(1.1); /* Slight zoom */ 
+    }
+}
+
+
+/* Feedback card styles with a subtle 3D shadow effect */
+.feedback-item {
+    background-color: rgba(0, 0, 0, 0.9); /* Fully opaque black card */
+    padding: 30px;
+    border-radius: 8px;
+    width: 800px;
+    height: 320px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    z-index: 2;
+    box-shadow: 0 5px 10px #fe828c, 0 5px 10px #fe828c; /* Soft 3D shadow for depth */
+    transform: rotateX(5deg) rotateY(5deg); /* Subtle tilt for the 3D effect */
+    transition: box-shadow 0.3s ease-in-out, transform 0.3s ease-in-out; /* Smooth transition for shadow on hover */
+}
+
+/* Keyframes for floating animation */
+@keyframes float {
+    0% {
+        transform: rotateX(5deg) rotateY(5deg) translateY(0); /* Initial position */
+    }
+    50% {
+        transform: rotateX(5deg) rotateY(5deg) translateY(-10px); /* Move up */
+    }
+    100% {
+        transform: rotateX(5deg) rotateY(5deg) translateY(0); /* Return to initial position */
+    }
+}
+
+.feedback-quote {
+    font-size: 20px;
+    color: #e1e1e1;
+    position: relative;
+    height: 100px;
+}
+
+.quote-icon {
+    font-size: 60px;
+    color: #fe828c;
+    position: absolute;
+    top: -10px;
+    left: -20px;
+}
+
+.feedback-text {
+    margin-top: 20px;
+    flex-grow: 1;
+}
+
+.feedback-footer {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.student-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.student-image {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 10px;
+}
+
+.student-name {
+    font-size: 18px;
+    font-weight: 600;
+    color: #f2f2f2;
+}
+
+.rating {
+    color: #fe828c;
+    font-size: 18px;
+}
+
+/* Button Styles for Navigation */
+.previous-button,
+.next-button {
+    font-size: 36px;
+    background: none;
+    border: none;
+    color: #f2b638;
+    cursor: pointer;
+    padding: 10px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 3; /* Ensure buttons appear above the background */
+}
+
+.previous-button {
+    left: 350px;
+}
+
+.next-button {
+    right: 350px;
+}
+
+.previous-button:hover,
+.next-button:hover {
+    transform: translateY(-50%) translateX(10px);
+}
