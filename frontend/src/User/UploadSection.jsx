@@ -21,41 +21,41 @@ const VideoUpload = () => {
     event.preventDefault();
 
     if (!selectedFile || !videoName || !videoDescription || !videoGenre) {
-      alert("Please fill out all fields and select a video file to upload.");
+      alert("Please fill all fields and select a video file to upload.");
       return;
     }
 
     const formData = new FormData();
-    formData.append("video", selectedFile);
+    formData.append("videoFile", selectedFile);
     formData.append("videoName", videoName);
     formData.append("videoDescription", videoDescription);
     formData.append("videoGenre", videoGenre);
-    formData.append("uploadedBy", "User123");
 
     try {
-      setUploading(true);
-      const response = await axios.post(
+      setUploading(true); // Set uploading to true before making the request
+
+      const response = await fetch(
         "http://localhost:5000/api/video/userUpload",
-        formData,
         {
-          withCredentials: true,
-          headers: {
-            "Content-Type": "multipart/form-data",
-          },
+          method: "POST",
+          body: formData,
+          credentials: "include",
         }
       );
-      console.log("Video uploaded successfully:", response.data);
-      alert("Response will Appear in 24 hrs");
+
+      const data = await response.json();
+      console.log("Server Response:", data);
+
+      if (data.videoURL) {
+        alert("Video uploaded successfully! and Response will come soon");
+      } else {
+        alert("Error uploading video.");
+      }
     } catch (error) {
-      console.error("Error uploading video:", error);
+      console.error("Upload error:", error);
       alert("Error uploading video. Please try again.");
     } finally {
-      setUploading(false);
-      setSelectedFile(null);
-      setPreviewUrl("");
-      setVideoName("");
-      setVideoDescription("");
-      setVideoGenre("");
+      setUploading(false); // Reset uploading state after response/error
     }
   };
 

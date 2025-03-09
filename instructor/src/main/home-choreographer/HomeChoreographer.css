@@ -1,0 +1,148 @@
+/* Heading */
+.workshop-heading {
+  font-size: 3em;
+  color: #fe828c;
+  text-align: center;
+  margin-top: -5em;
+  margin-bottom: 2em;
+  text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3); /* Slight shadow for depth */
+}
+
+/* Card Container */
+.Wcard-container {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr); /* 5 cards per row */
+  gap: 20px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Card Styling */
+.Wcard {
+  position: relative;
+  border-radius: 10px;
+  overflow: hidden;
+  background: linear-gradient(135deg, #fefefe, #f5f5f5);
+  width: 100%;
+  height: 230px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15); /* Soft shadow */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Hover Title - Now appears above the card */
+.Wcard-hover-title {
+  position: absolute;
+  top: -40px; /* Moves the title outside the card */
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #fe828c; /* Title background color */
+  color: white;
+  padding: 5px 10px;
+  font-size: 1.2em;
+  font-weight: bold;
+  text-transform: uppercase;
+  border-radius: 5px;
+  opacity: 0; /* Hidden by default */
+  transition: opacity 0.3s ease-in-out; /* Fade-in effect */
+  z-index: 2; /* Ensure it appears on top */
+}
+
+/* Hover Effect for Card */
+.Wcard:hover {
+  transform: rotateY(10deg) rotateX(10deg); /* Perspective tilt */
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25), 0 0 20px #fe828c; /* Elevated shadow + glow */
+}
+
+/* Show title when hovered */
+.Wcard:hover .Wcard-hover-title {
+  opacity: 1; /* Title becomes visible on hover */
+}
+
+/* Image Section */
+.Wimage {
+  width: 100%;
+  height: 70%;
+}
+
+.Wimage img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Text Section */
+.Wtext {
+  height: 30%;
+  background-color: #fe828c;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 1em;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+/* Upper Hover Content */
+.Wcard-upper {
+  position: absolute;
+  top: -100%;
+  left: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.85);
+  color: white;
+  padding: 10px;
+  text-align: center;
+  font-size: 0.9em;
+  transition: top 0.4s ease-in-out;
+  z-index: 2;
+}
+
+/* Lower Hover Content */
+.Wcard-lower {
+  position: absolute;
+  bottom: -100%;
+  left: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.85);
+  color: white;
+  padding: 10px;
+  text-align: center;
+  font-size: 0.9em;
+  transition: bottom 0.4s ease-in-out;
+  z-index: 1;
+}
+
+/* Hover Effect for Upper and Lower Sections */
+.Wcard:hover .Wcard-upper {
+  top: 0;
+}
+
+.Wcard:hover .Wcard-lower {
+  bottom: 0;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+  .Wcard-container {
+    grid-template-columns: repeat(4, 1fr); /* 4 cards per row */
+  }
+}
+
+@media (max-width: 900px) {
+  .Wcard-container {
+    grid-template-columns: repeat(3, 1fr); /* 3 cards per row */
+  }
+}
+
+@media (max-width: 600px) {
+  .Wcard-container {
+    grid-template-columns: repeat(2, 1fr); /* 2 cards per row */
+  }
+}
+
+@media (max-width: 400px) {
+  .Wcard-container {
+    grid-template-columns: 1fr; /* 1 card per row */
+  }
+}

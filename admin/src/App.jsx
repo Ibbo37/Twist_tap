@@ -7,6 +7,7 @@ import ResetPassword from "./components/ResetPassword";
 import ForgetPassword from "./components/ForgetPassword";
 import AdminDashboard from "./admin_dashboard/AdminDashboard";
 import Admin from "./admin_dashboard/Admin";
+import Navbar from "./navbar/Navbar";
 
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
         <Router>
 
           <Routes>
+            {/* <Navbar /> */}
             
             <Route path="/" element={<AuthForm />} />
             <Route path="/signup/verification" element={<VerificationPage/>} />
