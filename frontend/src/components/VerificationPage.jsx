@@ -46,7 +46,7 @@ const VerificationPage = () => {
 
         const data = await response.json();
         if (response.ok) {
-          navigate('/');
+          navigate('/login-register');
         } else {
           setError(data.message || 'Verification failed');
         }

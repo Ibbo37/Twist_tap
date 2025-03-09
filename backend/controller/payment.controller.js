@@ -1,64 +1,66 @@
-import dotenv from "dotenv";
+import Razorpay from "razorpay";
 import Payment from "../model/Payment.js";
+import dotenv from "dotenv";
+import crypto from "crypto";
 
 dotenv.config();
 
-// 💳 Initiate Payment
-export const retrievePayment = async (req, res) => {
-  try{
-    const payments = await Payment.find({ UserId: req.user._id });
-    res.status(200).json(payments);
-  }
-  catch(error){
-    res.status(500).json({ success: false, message: "Payment retrieval failed", error });
-  }
-}
+const razorpay = new Razorpay({
+  key_id: process.env.RAZORPAY_KEY_ID,
+  key_secret: process.env.RAZORPAY_SECRET,
+});
 
-export const initiatePayment = async (req, res) => {
+
+export const createOrder = async (req, res) => {
   try {
-    const { name, email, phone, amount, payingFor } = req.body;
-    console.log("Name",name);
-    
-    // Create a new payment record (status: pending)
-    const newPayment = new Payment({
-      name,
-      email,
-      phone,
-      amount,
-      payingFor,   
-      paymentId: `PAY_${Date.now()}`,
-      UserId: req.user._id
-    });
+    const { amount } = req.body;
+    if (!amount) {
+      return res.status(400).json({ error: "Amount is required" });
+    }
 
-    await newPayment.save();
+    const options = {
+      amount: parseInt(amount) * 100,
+      currency: "INR",
+      receipt: `order_rcptid_${Date.now()}`,
+    };
 
-    // Generate Easebuzz Payment Link
-    const paymentLink = `https://pay.easebuzz.in/easy_collect/${newPayment.paymentId}`;
-
-    res.status(200).json({ success: true, paymentLink });
+    const order = await razorpay.orders.create(options);
+    res.json(order);
   } catch (error) {
-    res.status(500).json({ success: false, message: "Payment initiation failed", error });
+    console.log("Razorpay Error: ", error);
+    res.status(500).json({ error: "Error creating Razorpay order" });
   }
 };
 
-// ✅ Verify Payment Status
+
 export const verifyPayment = async (req, res) => {
   try {
-    const { paymentId, status } = req.body;
+    const { razorpay_order_id, razorpay_payment_id, razorpay_signature, amount } = req.body;
 
-    // Update payment status in DB
-    const payment = await Payment.findOneAndUpdate(
-      { paymentId },
-      { status },
-      { new: true }
-    );
+    
+    const generatedSignature = crypto
+      .createHmac("sha256", process.env.RAZORPAY_SECRET)
+      .update(razorpay_order_id + "|" + razorpay_payment_id)
+      .digest("hex");
 
-    if (!payment) {
-      return res.status(404).json({ success: false, message: "Payment not found" });
+    if (generatedSignature !== razorpay_signature) {
+      return res.status(400).json({ error: "Invalid Payment Signature" });
     }
 
-    res.json({ success: true, message: "Payment status updated", payment });
+    
+    const newPayment = new Payment({
+      userId: req.user._id,
+      orderId: razorpay_order_id,
+      paymentId: razorpay_payment_id,
+      amount: amount,
+      currency: "INR",
+      status: "Success",
+    });
+
+    await newPayment.save();
+    res.json({ success: true, message: "Payment verified and saved" });
   } catch (error) {
-    res.status(500).json({ success: false, message: "Payment verification failed", error });
+    console.log("Payment Verification Error: ", error);
+    res.status(500).json({ error: "Error verifying payment" });
   }
 };

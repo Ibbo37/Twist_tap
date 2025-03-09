@@ -34,23 +34,24 @@ const UserDashboard = () => {
   };
 
   return (
-    <div className="h-screen w-screen bg-gradient-to-r from-gray-100 to-blue-50 flex">
+    <div className="h-screen w-screen bg-black flex">
       <Sidebar
         profilePic={profilePic}
         user={user}
         selectedSection={selectedSection}
         onSectionChange={setSelectedSection}
         onLogout={handleLogout}
+        className="bg-black text-white"
       />
-      <div className="w-3/4 bg-white p-8 overflow-y-auto">
+      <div className="w-3/4 bg-black p-8 overflow-y-auto text-white border-l-2 border-pink-500">
         {selectedSection === "profile" && (
           <ProfileSection profilePic={profilePic} user={user} onProfilePicUpload={handleProfilePicUpload} />
         )}
-        {selectedSection === "upload" && <UploadSection />}
+        {selectedSection === "upload" && <UploadSection className="text-pink-400" />}
         {selectedSection === "myUploads" && (
-          <MyUploadsSection selectedVideo={selectedVideo} onVideoSelect={setSelectedVideo} />
+          <MyUploadsSection selectedVideo={selectedVideo} onVideoSelect={setSelectedVideo} className="text-pink-400" />
         )}
-        {selectedSection === "settings" && <SettingsSection user={user} />}
+        {selectedSection === "settings" && <SettingsSection user={user} className="text-pink-400" />}
       </div>
     </div>
   );

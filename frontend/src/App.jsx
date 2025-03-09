@@ -20,8 +20,11 @@ import VideoVerification from "./Admin/VideoVerification";
 import ResetPassword from "./components/ResetPassword";
 import ForgetPassword from "./components/ForgetPassword";
 import VerificationOtp from "./components/VerificationOtp";
-
+import Tutorials from "./components/Tutorials";
+import TPracticeUpload from "./components/TPracticeUpload";
   import VerificationPage from "./components/VerificationPage";
+import Payment from "./payment";
+
 
 function App() {
   return (
@@ -51,6 +54,10 @@ function App() {
             <Route path='/userdashboard' element={<UserDashboard />} />
             <Route path="/payment" element={<PaymentPage />} />
             <Route path="/paymentconfirmation" element={<PaymentConfirmation />} />
+            <Route path="/tutorials" element={<Tutorials />} />
+            <Route path="/tpracticeupload" element={<TPracticeUpload />} />
+
+            <Route path="/payments" element={<Payment />} />
 
           </Routes>
         </Router>

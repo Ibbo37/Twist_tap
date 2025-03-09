@@ -9,7 +9,6 @@ const VideoUpload = () => {
   const [videoDescription, setVideoDescription] = useState("");
   const [videoGenre, setVideoGenre] = useState("");
 
-  
   const handleFileChange = (event) => {
     const file = event.target.files[0];
     if (file) {
@@ -36,7 +35,7 @@ const VideoUpload = () => {
     try {
       setUploading(true);
       const response = await axios.post(
-        "http://localhost:5000/api/video/uploadVideo",
+        "http://localhost:5000/api/video/uploadVideos",
         formData,
         {
           withCredentials: true,
@@ -61,74 +60,59 @@ const VideoUpload = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-100 flex">
-      {/* Left Column: Upload Form */}
-      <div className="w-1/2 p-6 bg-white shadow-md">
-        <h2 className="text-2xl font-bold text-center mb-6">Upload Video</h2>
+    <div className="min-h-screen flex bg-black text-white">
+      <div className="w-1/2 p-6 bg-gray-900 shadow-md">
+        <h2 className="text-2xl font-bold text-center mb-6 text-[#fe828c]">
+          Upload Video
+        </h2>
 
         <form onSubmit={handleUpload}>
           <div className="mb-4">
-            <label
-              htmlFor="video-upload"
-              className="block text-sm font-medium text-gray-700 mb-2"
-            >
+            <label className="block text-sm font-medium text-[#fe828c] mb-2">
               Select a video file:
             </label>
             <input
               type="file"
-              id="video-upload"
               accept="video/*"
               onChange={handleFileChange}
-              className="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 focus:outline-none focus:ring focus:ring-blue-300"
+              className="block w-full text-sm text-gray-300 border border-gray-600 rounded-lg cursor-pointer bg-gray-800 focus:outline-none focus:ring focus:ring-[#fe828c]"
             />
           </div>
 
           <div className="mb-4">
-            <label
-              htmlFor="video-name"
-              className="block text-sm font-medium text-gray-700"
-            >
+            <label className="block text-sm font-medium text-[#fe828c]">
               Video Name
             </label>
             <input
               type="text"
-              id="video-name"
               value={videoName}
               onChange={(e) => setVideoName(e.target.value)}
-              className="mt-2 p-3 border border-gray-300 rounded-md w-full text-gray-900"
+              className="mt-2 p-3 border border-gray-600 rounded-md w-full text-black"
               placeholder="Enter video name"
             />
           </div>
 
           <div className="mb-4">
-            <label
-              htmlFor="video-description"
-              className="block text-sm font-medium text-gray-700"
-            >
+            <label className="block text-sm font-medium text-[#fe828c]">
               Video Description
             </label>
             <textarea
-              id="video-description"
               value={videoDescription}
               onChange={(e) => setVideoDescription(e.target.value)}
-              className="mt-2 p-3 border border-gray-300 rounded-md w-full text-gray-900"
+              className="mt-2 p-3 border border-gray-600 rounded-md w-full text-black"
               placeholder="Enter video description"
               rows="3"
             ></textarea>
           </div>
 
           <div className="mb-4">
-            <label
-              htmlFor="video-genre"
-              className="block text-sm font-medium text-gray-700"
-            >
+            <label className="block text-sm font-medium text-[#fe828c]">
               Video Genre
             </label>
             <select
-              id="video-genre"
               value={videoGenre}
               onChange={(e) => setVideoGenre(e.target.value)}
-              className="mt-2 p-3 border border-gray-300 rounded-md w-full text-gray-900 bg-white"
+              className="mt-2 p-3 border border-gray-600 rounded-md w-full text-black bg-white"
             >
               <option value="">Select genre</option>
               <option value="action">Action</option>
@@ -146,8 +130,8 @@ const VideoUpload = () => {
             disabled={uploading}
             className={`w-full py-2 text-white rounded ${
               uploading
-                ? "bg-blue-300 cursor-not-allowed"
-                : "bg-blue-500 hover:bg-blue-600"
+                ? "bg-gray-500 cursor-not-allowed"
+                : "bg-[#fe828c] hover:bg-pink-600"
             }`}
           >
             {uploading ? "Uploading..." : "Upload Video"}
@@ -155,21 +139,20 @@ const VideoUpload = () => {
         </form>
       </div>
 
-      {/* Right Column: Video Preview */}
-      <div className="w-1/2 p-6 bg-gray-100 flex items-center justify-center">
+      <div className="w-1/2 p-6 bg-gray-800 flex items-center justify-center">
         {previewUrl ? (
           <div className="relative w-full max-w-sm">
-            <h3 className="absolute top-4 left-4 bg-black bg-opacity-50 text-white px-2 py-1 rounded">
+            <h3 className="absolute top-4 left-4 bg-[#fe828c] text-black px-2 py-1 rounded">
               {videoName || "Preview"}
             </h3>
             <video
               src={previewUrl}
               controls
-              className="w-full h-auto rounded border shadow-md"
+              className="w-full h-auto rounded border border-[#fe828c] shadow-md"
             ></video>
           </div>
         ) : (
-          <p className="text-gray-500">No video selected for preview.</p>
+          <p className="text-gray-400">No video selected for preview.</p>
         )}
       </div>
     </div>

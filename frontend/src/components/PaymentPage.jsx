@@ -17,6 +17,14 @@ const PaymentPage = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
+  
+
+  const handleClick = () => {
+    if (!loading && !Object.values(formData).some((field) => !field)) {
+      navigate("/payments");
+    }
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true); // Show loading state
@@ -42,7 +50,7 @@ const PaymentPage = () => {
 
       const data = await res.json();
 
-      if (res.status===200) {
+      if (res.status === 200) {
 
         alert("Payment initiated successfully!");
         // Redirect to Payment Confirmation Page
@@ -199,8 +207,9 @@ const PaymentPage = () => {
             <button
               type="submit"
               disabled={loading || Object.values(formData).some((field) => !field)}
+              onClick={handleClick}
               className={`w-full font-bold py-4 px-6 rounded-lg transition-all duration-300 ease-in-out text-lg 
-              ${loading || Object.values(formData).some((field) => !field) ? "bg-gray-400 cursor-not-allowed" : "bg-pink-600 hover:bg-pink-700 text-white"}`}
+      ${loading || Object.values(formData).some((field) => !field) ? "bg-gray-400 cursor-not-allowed" : "bg-pink-600 hover:bg-pink-700 text-white"}`}
             >
               {loading ? "Processing..." : "Pay Now"}
             </button>
