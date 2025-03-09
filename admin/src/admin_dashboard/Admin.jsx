@@ -15,9 +15,9 @@ export default function Admin() {
         if (!response.ok) throw new Error("Failed to fetch videos");
 
         const data = await response.json();
-        console.log("API Response:", data); // ✅ Debugging Log
+        console.log("API Response:", data); 
 
-        // ✅ Check if `data.data` exists
+       
         const videosArray = Array.isArray(data.data) ? data.data : [];
         setVideos(videosArray.filter(video => video.videoStatus === "pending"));
 
@@ -38,7 +38,7 @@ export default function Admin() {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ _id: id, action: "approve" }),
-        credentials: "include",  // ✅ This ensures cookies or auth headers are sent
+        credentials: "include",  
       });
       
 
@@ -47,7 +47,7 @@ export default function Admin() {
       setVideos((prevVideos) => prevVideos.filter(video => video._id !== id));
       setSelectedVideo(null);
 
-      alert('✅ Video Approved Successfully!'); // ✅ Alert after UI update
+      alert('✅ Video Approved Successfully!'); 
 
     } catch (error) {
       console.error('Error approving video:', error);
@@ -60,7 +60,7 @@ export default function Admin() {
     if (!reason) return;
 
     try {
-      const response = await fetch('http://localhost:5000/api/video/videoVerified', {
+      const response = await fetch('http://localhost:5000/api/video/adminVerified', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ _id: id, action: "reject", reason }),

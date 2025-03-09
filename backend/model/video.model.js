@@ -27,6 +27,9 @@ const videoSchema = new mongoose.Schema(
       enum: ["pending", "approved", "rejected"],
       default: "pending",
     },
+    reason:{
+      type:String,
+    },
     videoURL: { type: String, required: true },
     likes: { type: Number, default: 0 }, 
     views: { type: Number, default: 0 }, 

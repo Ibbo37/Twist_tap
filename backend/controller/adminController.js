@@ -1,5 +1,4 @@
 import Video from "../model/video.model.js";
-import ffmpeg from "fluent-ffmpeg";
 import cloudinary from "../utils/cloudinary.js";
 
 export const videoUpload = async (req, res) => {
@@ -18,7 +17,7 @@ export const videoUpload = async (req, res) => {
     const videoPath = req.file.path;
 
     try {
-      // Upload video to Cloudinary
+      
       const uploadResult = await cloudinary.uploader.upload(videoPath, {
         resource_type: "video",
         folder: "user_videos",
@@ -47,11 +46,11 @@ export const videoUpload = async (req, res) => {
 };
 
 export const videoVerified = async (req, res) => {
-  const { _id, action } = req.body;
+  const { _id, action, reason } = req.body;
   console.log(_id, action);
-  // Use `_id` instead of `videoId`
+  
 
-  // Validate request body
+  
   if (!_id || !action) {
     return res.status(400).json({ message: "Video ID and action are required" });
   }
@@ -61,25 +60,24 @@ export const videoVerified = async (req, res) => {
   }
 
   try {
-    // Find video by ID
+    
     const video = await Video.findById(_id);
     if (!video) {
       return res.status(404).json({ message: "Video not found" });
     }
 
-    // Update video status
+   
     if (action === "approve") {
       video.isVerified = true;
-      video.videoStatus = "approved";  // ✅ Corrected Property Name
-    } else if (action === "reject") {
+      video.videoStatus = "approved";  
+    } else if (action === "reject" && reason) {
       video.isVerified = false;
-      video.videoStatus = "rejected";  // ✅ Corrected Property Name
+      video.videoStatus = "rejected"; 
+      video.reason = reason; 
     }
 
-    // Save the updated video
+    
     await video.save();
-
-    // Respond with success and the updated video
     return res.status(200).json({
       message: `Video ${action === "approve" ? "approved" : "rejected"} successfully`,
       video,
@@ -121,17 +119,17 @@ export const getVerifiedVideos = async (req, res) => {
 
 export const videoVerificationCheck = async (req, res) => {
   try {
-    // ✅ Fetch videos where videoStatus is "pending"
+    
     const videos = await Video.find({ videoStatus: "pending" });
 
-    console.log("Pending Videos: ", videos.length); // ✅ Show count, not full list
+    console.log("Pending Videos: ", videos.length); 
 
     res.status(200).json({
       success: true,
       data: videos,
     });
   } catch (error) {
-    console.error("Error fetching pending videos:", error.message); // ✅ Proper error logging
+    console.error("Error fetching pending videos:", error.message); 
 
     res.status(500).json({
       success: false,

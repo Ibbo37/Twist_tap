@@ -11,7 +11,7 @@ import paymentRoutes from "./routes/payment.route.js";
 import adminDashboard from "./routes/admin.route.js";
 import adminTutorial from "./routes/Tutorial.js";
 import practiceRoutes from "./routes/practice.js";
-  // Import the admission route
+
 
 const app = express();
 const port = 5000;
@@ -23,14 +23,13 @@ app.use(cookieParser());
 app.use(express.json());
 app.use(
   cors({
-    origin: ["http://localhost:5173","http://localhost:5174","http://localhost:5175"],
+    origin: ["http://localhost:5173","http://localhost:5174","http://localhost:5175","http://localhost:5176"],
     credentials: true,
   })
 );
 
 DBConnect();
 
-// Use the existing routes
 app.use("/api/auth", router);
 app.use("/api/video",video)
 app.use("/api/payments", paymentRoutes);
@@ -43,5 +42,5 @@ app.use("/api/practice", practiceRoutes);
 app.listen(port, () => {
   console.log(`Server running on http://localhost:${port}`);
 });
-// ✅ Payment API Routes
+
 

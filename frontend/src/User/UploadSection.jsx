@@ -35,7 +35,7 @@ const VideoUpload = () => {
     try {
       setUploading(true);
       const response = await axios.post(
-        "http://localhost:5000/api/video/uploadVideos",
+        "http://localhost:5000/api/video/userUpload",
         formData,
         {
           withCredentials: true,
